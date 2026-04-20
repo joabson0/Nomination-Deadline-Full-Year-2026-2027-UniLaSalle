@@ -2,8 +2,8 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>Countdown UniLaSalle</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Countdown</title>
 
   <style>
     body {
@@ -13,23 +13,67 @@
       justify-content: center;
       align-items: center;
       height: 100vh;
+      font-family: Arial, sans-serif;
     }
 
-    iframe {
-      border: none;
-      width: 314px;
-      height: 66px;
+    .countdown {
+      display: flex;
+      gap: 10px;
+      font-size: 18px;
+      font-weight: bold;
+      color: #ffffff;
+      background: rgba(0,0,0,0.7);
+      padding: 8px 12px;
+      border-radius: 8px;
+    }
+
+    .item {
+      text-align: center;
+    }
+
+    .label {
+      font-size: 10px;
+      opacity: 0.7;
     }
   </style>
 </head>
 
 <body>
 
-<iframe 
-  src="https://free.timeanddate.com/countdown/iadqbz69/n491/cf12/cm0/cu4/ct2/cs0/ca0/cr0/ss0/cac000/cpc000/pct/tc66c/fn3/fs100/szw320/szh135/tatNomination%20Deadline/tac000/tptNomination%20Deadline/tpc000/matFull%20Year%202026-2027%20at%20UniLaSalle/mac000/mptFull%20Year%202026-2027%20at%20UniLaSalle/mpc000/iso2026-05-01T23:59:59"
-  allowtransparency="true"
-  scrolling="no">
-</iframe>
+<div class="countdown">
+  <div class="item"><span id="days">00</span><div class="label">D</div></div>
+  <div class="item"><span id="hours">00</span><div class="label">H</div></div>
+  <div class="item"><span id="minutes">00</span><div class="label">M</div></div>
+  <div class="item"><span id="seconds">00</span><div class="label">S</div></div>
+</div>
+
+<script>
+  // ⚠️ DATA DO EVENTO (ajuste aqui)
+  const targetDate = new Date("2026-05-01T23:59:59-03:00");
+
+  function updateCountdown() {
+    const now = new Date();
+    const diff = targetDate - now;
+
+    if (diff <= 0) {
+      document.querySelector(".countdown").innerHTML = "00:00:00:00";
+      return;
+    }
+
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+    const minutes = Math.floor((diff / (1000 * 60)) % 60);
+    const seconds = Math.floor((diff / 1000) % 60);
+
+    document.getElementById("days").textContent = String(days).padStart(2, '0');
+    document.getElementById("hours").textContent = String(hours).padStart(2, '0');
+    document.getElementById("minutes").textContent = String(minutes).padStart(2, '0');
+    document.getElementById("seconds").textContent = String(seconds).padStart(2, '0');
+  }
+
+  setInterval(updateCountdown, 1000);
+  updateCountdown();
+</script>
 
 </body>
 </html>
