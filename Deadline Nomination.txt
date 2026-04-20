@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Contador</title>
+  <style>
+    body {
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: transparent;
+    }
+  </style>
+</head>
+<body>
+
+<iframe 
+  width="300" 
+  height="154" 
+  src="https://w2.countingdownto.com/7053146" 
+  frameborder="0">
+</iframe>
+
+</body>
+</html>
